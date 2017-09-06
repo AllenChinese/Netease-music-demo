@@ -13,7 +13,8 @@ let routerMode = 'history'
 
 // }
 // baseUrl = 'http://10.0.0.181:8888/mapdata';
-baseUrl = 'http://10.0.0.46:8888/mapdata';
+// baseUrl = 'http://10.0.0.46:8888/mapdata';
+baseUrl = '';
 
 export {
 	baseUrl,

@@ -13,13 +13,15 @@
       </div>
       <h3>{{ slides[nowIndex].title }}</h3>
       <ul class="slide-pages">
-        <li @click="goto(prevIndex)">&lt;</li>
         <li v-for="(item, index) in slides" @click="goto(index)">
           <a :class="{on: index === nowIndex}">{{ index + 1 }}</a>
         </li>
-        <li @click="goto(nextIndex)">&gt;</li>
       </ul>
     </div>
+
+    <!-- 左右滑动arrow -->
+    <i class="arrow left-arrow el-icon-arrow-left" @click="goto(prevIndex)" @mouseover="clearInv" @mouseout="runInv"></i>
+    <i class="arrow right-arrow el-icon-arrow-right" @click="goto(nextIndex)" @mouseover="clearInv" @mouseout="runInv"></i>
   </div>
 </template>
 
@@ -96,6 +98,7 @@ export default {
   transform: translateX(-730px);
 }
 .slide-bgc{
+  position: relative;
   width: 100%;
   height: 336px;
 }
@@ -143,5 +146,20 @@ export default {
 }
 .slide-pages li .on {
   text-decoration: underline;
+}
+
+.arrow{
+  position: absolute;
+  top: 130px;
+  font-size: 3em;
+  color: #ccc;
+  opacity: .6;
+  cursor: pointer;
+}
+.left-arrow{
+  left: 90px;
+}
+.right-arrow{
+  right: 90px;
 }
 </style>

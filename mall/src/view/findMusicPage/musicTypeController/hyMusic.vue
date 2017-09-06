@@ -15,12 +15,15 @@
   </div>
 </template>
 <script>
-let musicMes = require('../../../data/detail.json');
+// let musicMes = require('../../../data/detail.json');
     export default {
         data () {
             return {
                 musicMes: null,
             }
+        },
+        computed: {
+             
         },
 
         methods: {
@@ -28,8 +31,7 @@ let musicMes = require('../../../data/detail.json');
         },
 
         mounted: function() {
-            // this.musicMes = this.$store.music.musicMes;
-            this.musicMes = musicMes;
+            this.musicMes = this.$store.state.musicMes;
         }
     }
 </script>

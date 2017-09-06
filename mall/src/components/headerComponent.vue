@@ -13,6 +13,19 @@
                   <router-link to="/downLoadComponent"><li><span><a href="">下载客户端</a></span></li></router-link>   
               </ul>
           </div>
+          <div class="h-search">
+              <input type="text" placeholder="音乐/电台/用户">
+          </div>
+          <div class="h-login">
+              <span @mouseover="showLoginType" @mouseout="hideLoginType">登录</span>
+              <div class="h-login-type" v-if="layout.isShowLoginType">
+                  <ul>
+                      <li v-for="(item, index) in loginType">
+                          {{item}}
+                      </li>
+                  </ul>
+              </div>
+          </div>
       </div>
   </div>
 </template>
@@ -20,8 +33,25 @@
     export default {
         data () {
             return {
-
+                layout:{
+                    isShowLoginType: false
+                },
+                loginType: null,
             }
+        },
+
+        methods: {
+            showLoginType() {
+                this.layout.isShowLoginType = true;
+            },
+
+            hideLoginType() {
+                this.layout.isShowLoginType = false;
+            }
+        },
+
+        mounted: function() {
+            this.loginType = this.$store.state.loginType
         }
     }
 </script>
@@ -72,7 +102,45 @@
 }
 .h-controller .h-tab a{
     font-size: .9rem;
-    color: #cccccc;
+    color: #ccc;
+}
+.h-controller .h-search{
+    float: left;
+    margin-left: 20px;
+}
+.h-controller .h-search input{
+    width: 160px;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 10px; 
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.h-controller .h-login{
+    position: relative;
+    float: left;
+    margin-left: 20px;
+}
+.h-controller .h-login span{
+    font-size: .80em;
+    color: #929292;
+    cursor: pointer;
+}
+.h-controller .h-login .h-login-type{
+    z-index: 10;
+    position: absolute;
+    right: -65px;
+    top: 60px;
+    width: 150px;
+    height: 200px;
+    background-color: #333;
+}
+.h-controller .h-login .h-login-type li{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: .85em;
+    color: #ccc;
 }
 </style>
 

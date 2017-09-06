@@ -23,16 +23,16 @@ export default {
   },
 
   methods:{
-    // initMusicMes() {
-    //   if ( musicMes !== '' ) {//保存到
-    //     // console.log(musicMes)
-    //     this.$store.dispatch('initmusicmes', musicMes)
-    //   }
-    // }
+    initMusicMes() {
+      if ( musicMes !== '' ) {//保存到
+        console.log(musicMes)
+        this.$store.dispatch('initmusicmes', musicMes)
+      }
+    }
   },
 
   mounted: function() {
-    // this.initMusicMes();
+    this.initMusicMes();
   }
 }
 </script>
@@ -47,6 +47,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  overflow: hidden;
+  overflow: auto;
 }
 </style>

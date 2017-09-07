@@ -71,11 +71,11 @@ import carousel from '../../components/Carousel'
 <style scoped>
     .findMusicComponent{
         width: 100%;
-        height: 95%;
+        height: 84%;
     }
     .hot-box{
         width: 730px;
-        height: 100%;
+        height: auto;
         margin: 0 auto;
         border: 1px solid #eee;
         box-sizing: border-box;

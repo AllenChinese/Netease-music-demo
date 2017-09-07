@@ -36,6 +36,10 @@
     }
 </script>
 <style scoped>
+    .hyComponent{
+        padding-bottom: 20px; 
+        overflow: hidden;
+    }
     .hot-box .hot-box-content ul{
         float: left;
         width: 100%;

@@ -16,8 +16,8 @@
           <div class="h-search">
               <input type="text" placeholder="音乐/电台/用户">
           </div>
-          <div class="h-login">
-              <span @mouseover="showLoginType" @mouseout="hideLoginType">登录</span>
+          <div class="h-login" @mouseover="showLoginType" @mouseout="hideLoginType">
+              <span>登录</span>
               <div class="h-login-type" v-if="layout.isShowLoginType">
                   <ul>
                       <li v-for="(item, index) in loginType">

@@ -3,12 +3,14 @@
     <headerComponent></headerComponent>
     <navComponent></navComponent>
     <router-view></router-view>
+    <footerComponent></footerComponent>
   </div>
 </template>
 
 <script>
 import headerComponent from './components/headerComponent'
 import navComponent from './components/navComponent'
+import footerComponent from './components/footerComponent'
 export default {
   name: 'app',
   data () {
@@ -19,19 +21,15 @@ export default {
   components: {
     headerComponent,
     navComponent,
+    footerComponent
   },
 
   methods:{
-    initMusicMes() {
-      if ( musicMes !== '' ) {//保存到
-        console.log(musicMes)
-        this.$store.dispatch('initmusicmes', musicMes)
-      }
-    }
+
   },
 
   mounted: function() {
-    this.initMusicMes();
+
   }
 }
 </script>
@@ -46,6 +44,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #F5F5F5;
   overflow: auto;
 }
 </style>

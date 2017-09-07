@@ -7,7 +7,6 @@
 </template>
 
 <script>
-let musicMes = require('./data/detail.json');
 import headerComponent from './components/headerComponent'
 import navComponent from './components/navComponent'
 export default {
@@ -23,16 +22,11 @@ export default {
   },
 
   methods:{
-    // initMusicMes() {
-    //   if ( musicMes !== '' ) {//保存到
-    //     // console.log(musicMes)
-    //     this.$store.dispatch('initmusicmes', musicMes)
-    //   }
-    // }
+
   },
 
   mounted: function() {
-    // this.initMusicMes();
+
   }
 }
 </script>

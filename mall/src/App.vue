@@ -29,7 +29,8 @@ export default {
   },
 
   mounted: function() {
-
+    // 指定初始路由
+    this.$router.push('/findMusicComponent');
   }
 }
 </script>

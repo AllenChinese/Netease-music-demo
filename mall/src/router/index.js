@@ -16,7 +16,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/findMusicComponent',
       name: 'findMusicComponent',
       component: findMusicComponent,
       children: [
@@ -26,17 +26,17 @@ export default new Router({
           component: hyComponent
         },
         {
-          path: '/gtComponent',
+          path: 'gtComponent',
           name: 'gtComponent',
           component: gtComponent
         },
         {
-          path: '/rhComponent',
+          path: 'rhComponent',
           name: 'rhComponent',
           component: rhComponent
         },
         {
-          path: '/omComponent',
+          path: 'omComponent',
           name: 'omComponent',
           component: omComponent
         }

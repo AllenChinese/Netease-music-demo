@@ -1,16 +1,16 @@
 <template>
   <div class="headerComponent">
       <div class="h-controller">
-          <a href="/#" class="h-logo">
+          <a href="#/findMusicComponent" class="h-logo">
             网易云音乐
           </a>
           <div class="h-tab">
               <ul>
-                  <router-link to="/"><li class="active"><span><a href="">发现音乐</a></span></li></router-link>
-                  <router-link to="/myMusicComponent"><li><span><a href="">我的音乐</a></span></li></router-link>
-                  <router-link to="/friendComponent"><li><span><a href="">朋友</a></span></li></router-link>
-                  <router-link to="/musicManComponent"><li><span><a href="">音乐人</a></span></li></router-link>
-                  <router-link to="/downLoadComponent"><li><span><a href="">下载客户端</a></span></li></router-link>   
+                  <router-link to="/findMusicComponent"><li v-bind:class="{ active: layout.changeColor[0] }" @click="changeBgcEvent(0)"><span><a href="">发现音乐</a></span></li></router-link>
+                  <router-link to="/myMusicComponent"><li v-bind:class="{ active: layout.changeColor[1] }" @click="changeBgcEvent(1)"><span><a href="">我的音乐</a></span></li></router-link>
+                  <router-link to="/friendComponent"><li v-bind:class="{ active: layout.changeColor[2] }" @click="changeBgcEvent(2)"><span><a href="">朋友</a></span></li></router-link>
+                  <router-link to="/musicManComponent"><li v-bind:class="{ active: layout.changeColor[3] }" @click="changeBgcEvent(3)"><span><a href="">音乐人</a></span></li></router-link>
+                  <router-link to="/downLoadComponent"><li v-bind:class="{ active: layout.changeColor[4] }" @click="changeBgcEvent(4)"><span><a href="">下载客户端</a></span></li></router-link>   
               </ul>
           </div>
           <div class="h-search">
@@ -34,7 +34,8 @@
         data () {
             return {
                 layout:{
-                    isShowLoginType: false
+                    isShowLoginType: false,
+                    changeColor: [true, false, false, false, false]
                 },
                 loginType: null,
             }
@@ -47,6 +48,23 @@
 
             hideLoginType() {
                 this.layout.isShowLoginType = false;
+            },
+            
+            /**
+             * @argument e: 传入的参数 代表数组中 index 位置
+             * 实现的方式不优雅，希望你能够有好的方式。
+             */ 
+            changeBgcEvent(e) {
+                let arr = [];
+                for( let elem in this.layout.changeColor ) { 
+                    parseInt(elem)
+                    if ( e == elem ) {
+                        arr.push(true);
+                    }else {
+                        arr.push(false)
+                    }
+                }
+                this.layout.changeColor = arr;
             }
         },
 

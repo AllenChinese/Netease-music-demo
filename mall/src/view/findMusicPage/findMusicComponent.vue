@@ -5,10 +5,10 @@
             <div class="hot-box-nav">
                 <ul>
                     <li><h2>热门推荐</h2></li>
-                    <router-link to="/"><li><span class="active">华语</span></li></router-link>
-                    <router-link to="/gtComponent"><li><span>港台</span></li></router-link>
-                    <router-link to="/rhComponent"><li><span>日韩</span></li></router-link>
-                    <router-link to="/omComponent"><li><span>欧美</span></li></router-link>
+                    <router-link to="/findMusicComponent"><li><span class="active">华语</span></li></router-link>
+                    <router-link to="/findMusicComponent/gtComponent"><li><span>港台</span></li></router-link>
+                    <router-link to="/findMusicComponent/rhComponent"><li><span>日韩</span></li></router-link>
+                    <router-link to="/findMusicComponent/omComponent"><li><span>欧美</span></li></router-link>
                 </ul>
             </div>
             <router-view></router-view>

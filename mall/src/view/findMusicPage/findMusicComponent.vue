@@ -51,12 +51,16 @@ import carousel from '../../components/Carousel'
             carousel
         },
 
+        computed:{
+
+        },
+
         methods: {
            async findAllMusic() {
             // 获取所有歌曲信息
             let musicMes = await findMusic();
             console.log(musicMes)
-           } 
+           },
         },
 
         mounted: function() {
@@ -78,7 +82,7 @@ import carousel from '../../components/Carousel'
     }
     .hot-box .hot-box-nav{
         width: 100%;
-        height: 8%;
+        height: 70px;
         padding-left: 20px;
         border-bottom: 3px solid #C20C0C;
         box-sizing: border-box;

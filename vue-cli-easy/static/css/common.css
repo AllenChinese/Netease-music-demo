@@ -1,0 +1,21 @@
+	* {
+		list-style-type:none;
+	}
+
+	html,body{
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+	}
+
+	a{color: #2fa0ec;text-decoration: none;outline: none;}
+	a:hover,a:focus{color:#74777b;}
+
+	li{list-style-type:none;}
+
+	li,ul{
+		padding: 0;
+		margin: 0;
+	}
+

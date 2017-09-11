@@ -16,7 +16,7 @@
           <div class="h-search">
               <input type="text" placeholder="音乐/电台/用户">
           </div>
-          <div class="h-login" @mouseover="showLoginType" @mouseout="hideLoginType">
+          <div class="h-login" @mouseover="showLoginType" @mouseout="hideLoginType" @click="showLoginBox">
               <span>登录</span>
               <div class="h-login-type" v-if="layout.isShowLoginType">
                   <ul>
@@ -27,29 +27,123 @@
               </div>
           </div>
       </div>
+      <!-- 登录弹出框 -->
+      <el-dialog
+        :title="loginTitle"
+        :visible.sync="layout.login.dialogVisible"
+        size="small"
+        class="loginModal">
+        <div class="loginIndex" v-if="layout.login.isShowLoginIndex">
+            <div class="leftBox">
+              <div class="upPic"></div>
+              <div class="block">
+                <el-button type="primary" @click="showLogin">登录</el-button>
+              </div>
+              <div class="block">
+                <el-button @click="showRegister">注册</el-button>
+              </div>
+            </div>
+        </div>
+        <div class="login sameBox" v-if="layout.login.isShowLogin">
+          <div class="loginContent">
+            <el-form>
+              <el-form-item label="账号">
+                <el-input v-model="login.name"></el-input>
+              </el-form-item>
+
+              <el-form-item label="密码">
+                <el-input v-model="login.passworrd"></el-input>
+              </el-form-item>
+
+              <div class="block">
+                <el-button type="primary" @click="showLogin">登录</el-button>
+              </div>
+            </el-form>
+          </div>
+          <div class="loginFooter">
+            <span @click="showRegister">免费注册</span>
+          </div>
+        </div>
+        <div class="register sameBox" v-if="layout.login.isShowRegister">
+          <div class="registerContent">
+            <el-form>
+              <el-form-item label="账号">
+                <el-input v-model="register.name"></el-input>
+              </el-form-item>
+
+              <el-form-item label="密码">
+                <el-input v-model="register.passworrd"></el-input>
+              </el-form-item>
+
+              <div class="block">
+                <el-button type="primary" @click="showLogin">下一步</el-button>
+              </div>
+            </el-form>
+          </div>
+          <div class="registerFooter">
+            <span @click="showLogin">返回登录</span>
+          </div>
+        </div>
+      </el-dialog>
   </div>
 </template>
 <script>
     export default {
         data () {
-            return {
-                layout:{
-                    isShowLoginType: false,
-                    changeColor: [true, false, false, false, false]
-                },
-                loginType: null,
+          return {
+            layout:{
+              isShowLoginType: false,
+              changeColor: [true, false, false, false, false],
+              login:{
+                dialogVisible: false,
+                isShowLoginIndex: true,
+                isShowLogin: false,
+                isShowRegister: false,    
+              }
+            },
+            loginType: null,
+            loginTitle: '登录',
+            login: {
+              name: null,
+              password: null
+            },
+            register: {
+              name: null,
+              password: null
             }
+          }
         },
 
         methods: {
             showLoginType() {
-                this.layout.isShowLoginType = true;
+              this.layout.isShowLoginType = true;
             },
 
             hideLoginType() {
-                this.layout.isShowLoginType = false;
+              this.layout.isShowLoginType = false;
             },
-            
+
+            showLoginBox() {
+              this.loginTitle = '登录';
+              this.layout.login.dialogVisible = true;
+              this.layout.login.isShowLoginIndex = true;
+              this.layout.login.isShowLogin = false;
+              this.layout.login.isShowRegister = false;
+            },
+
+            showLogin() {
+              this.loginTitle = '登录';
+              this.layout.login.isShowLoginIndex = false;
+              this.layout.login.isShowLogin = true;
+              this.layout.login.isShowRegister = false;
+            },
+
+            showRegister() {
+              this.loginTitle = '注册';
+              this.layout.login.isShowLoginIndex = false;
+              this.layout.login.isShowLogin = false;
+              this.layout.login.isShowRegister = true;
+            },
             /**
              * @argument e: 传入的参数 代表数组中 index 位置
              * 实现的方式不优雅，希望你能够有好的方式。
@@ -65,11 +159,13 @@
                     }
                 }
                 this.layout.changeColor = arr;
-            }
+            },
+
+           
         },
 
         mounted: function() {
-            this.loginType = this.$store.state.loginType
+          this.loginType = this.$store.state.loginType
         }
     }
 </script>
@@ -160,5 +256,62 @@
     font-size: .85em;
     color: #ccc;
 }
+
+/* 
+ * loginModal登录框
+ */
+ .loginModal{
+     text-align: left;
+     min-width: 400px;
+     min-height: 400px;
+ }
+ .loginModal .loginIndex{
+   width: 100%;
+   height: 100%;
+ }
+ .loginModal .loginIndex .leftBox {
+   width: 60%;
+   height: 100%;
+   border-right: 1px solid #eee;
+ }
+ .loginModal .loginIndex .leftBox .upPic{
+   height: 120px;
+   background: url('https://s2.music.126.net/style/web2/img/platform.png?42ab2cc5cda8e048cc14758bc2071133') no-repeat 13px 0;
+ }
+ .block button{
+   width: 90%;
+   height: 35px;
+   margin-top: 5px;
+ }
+.loginModal .sameBox{
+   width: 70%;
+   height: 80%;
+   margin: 0 auto;
+ }
+ .loginModal .sameBox .el-input{
+   width: 85%!important;
+ }
+ .loginModal .sameBox .block button{
+   width: 85%;
+   margin-left: 40px;
+ }
+ .loginModal .sameBox .loginFooter{
+   width: 100%;
+   height: 35px;
+   line-height: 35px;
+   text-align: right;
+ }
+ .loginModal .sameBox .registerFooter{
+   width: 100%;
+   height: 35px;
+   line-height: 35px;
+   text-align: left;
+ }
+ .loginModal .sameBox .loginFooter span{
+   cursor: pointer;
+ }
+ .loginModal .sameBox .registerFooter span{
+   cursor: pointer;
+ }
 </style>
 

@@ -4,7 +4,7 @@
         <ul>
             <li v-for="item in musicMes" @click="showMusicDetail(item.img, item.title, item.url)">
                 <div class="imgBox">
-                    <img :src="item.img" alt="">
+                    <img :src="item.img" alt="图片">
                 </div>
                 <div class="titleBox">
                     <span v-text="item.title"></span>
@@ -18,9 +18,9 @@
         title="music"
         :visible.sync="detail.dialogVisible"
         size="small">
-        <img :src="detail.img" alt="">
+        <img :src="detail.img" alt="图片">
         <h5 v-text="detail.title"></h5>
-        <audio controls="controls" autoplay="autoplay">
+        <audio controls="controls" loop="loop" id="myAudio" ref="myAudio">
             <source :src="detail.url" type="audio/mpeg" />
             Your browser does not support the audio element.
         </audio>
@@ -44,22 +44,42 @@
             }
         },
         computed: {
-             
+            
         },
 
         methods: {
             // 展示音乐信息详情，模块框形式
             showMusicDetail(img, title, url) {
-                this.detail.dialogVisible = true;
-                console.log(url)
-                this.detail.img = img;
-                this.detail.title = title;
-                this.detail.url = url;
+              this.detail.dialogVisible = true;
+
+              this.detail.img = img;
+              this.detail.title = title;
+              this.detail.url = url;
+            },
+            
+            autoplay() {
+                let myAudio = this.$refs.myAudio;
+                if ( myAudio === undefined ) {
+                  return false;
+                }else {
+                  if ( this.detail.dialogVisible == false ) {
+                    myAudio.pause();
+                  }else if( this.detail.dialogVisible == true ) {
+                    myAudio.play();
+                  }
+                }
+                
+                
             }
         },
 
         mounted: function() {
-            this.musicMes = this.$store.state.musicMes;
+          this.musicMes = this.$store.state.musicMes;
+            
+        },
+
+        updated() {
+          this.autoplay();
         }
     }
 </script>

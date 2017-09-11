@@ -30,42 +30,42 @@
 <hr><h3>五、目录结构</h3>
 
 ```
-|——build                             //构建              
+|——build                                                //构建              
 
-|——config                            //配置
+|——config                                               //配置
 
-|——node_modules                      //npm项目依赖
+|——node_modules                                         //npm项目依赖
 
 |——src	
-	|——assets                        //静态资源，图片
+	|——assets                                             //静态资源，图片
 |	
-	|——components——                  //公共组件 
-|			  |——carousel.vue        //轮播图组件
+	|——components——                                       //公共组件 
+|			  |——carousel.vue                                 //轮播图组件
 	|
-|			  |——footerComponent.vue //底部组件
+|			  |——footerComponent.vue                          //底部组件
 	|		
-|			  |——headerComponent.vue //头部组件
+|			  |——headerComponent.vue                          //头部组件
 	|
-|			  |——navComponent.vue    //红色部分
+|			  |——navComponent.vue                             //红色部分
 	|
 |
 	|——config——
-|		      |——env.js             //开发api路径
+|		      |——env.js                                     //开发api路径
 	|
-|		      |——fetch.js           //封装的异步请求
+|		      |——fetch.js                                   //封装的异步请求
 	|——data
 |
-	|——router——                     //路由
+	|——router——                                           //路由
 |		      |——index.js
-	|——service                      //项目中全部的异步接口请求文件
+	|——service                                            //项目中全部的异步接口请求文件
 |	
-	|——store——                      //vuex状态管理
+	|——store——                                            //vuex状态管理
 |		     |——action.js
 	|						
 |		     |——index.js
 	|
 |		     |——mutations.js
-	|——view——                      //组件页面部分
+	|——view——                                             //组件页面部分
 |		    |——findMusicPage——
 	|				 |——musicTypeController
 |		    |
@@ -77,14 +77,14 @@
 |		    |——musicManComponent.vue
 	|
 |		    |——myMusicComponent.vue
-	|——app.vue                      //主文件
+	|——app.vue                                            //主文件
 |			
-	|——main.js                      //主文件入口
+	|——main.js                                            //主文件入口
 |——static
 	
-|——test                             //单元测试
+|——test                                                 //单元测试
 
-|——index.html	                    //首页
+|——index.html	                                          //首页
 
 |——package.json
 

@@ -41,7 +41,7 @@
         },
 
         methods: {
-            // 展示音乐信息详情
+            // 展示音乐信息详情，模块框形式
             showMusicDetail(img, title) {
                 this.detail.dialogVisible = true;
                 this.detail.img = img;

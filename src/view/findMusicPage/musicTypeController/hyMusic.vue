@@ -74,8 +74,7 @@
         },
 
         mounted: function() {
-          this.musicMes = this.$store.state.musicMes;
-            
+          this.musicMes = this.$store.state.musicMes;           
         },
 
         updated() {

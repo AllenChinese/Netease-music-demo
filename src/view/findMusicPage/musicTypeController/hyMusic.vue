@@ -2,7 +2,7 @@
   <div class="hyComponent">
       <div class="hot-box-content">
         <ul>
-            <li v-for="item in musicMes">
+            <li v-for="item in musicMes" @click="showMusicDetail(item.img, item.title)">
                 <div class="imgBox">
                     <img :src="item.img" alt="">
                 </div>
@@ -12,6 +12,16 @@
             </li>
         </ul>
       </div>
+
+      <!-- 音乐详情模态框 -->
+      <el-dialog
+        title="music"
+        :visible.sync="detail.dialogVisible"
+        size="small">
+        <img :src="detail.img" alt="">
+        <h5 v-text="detail.title"></h5>
+      </el-dialog>
+
   </div>
 </template>
 <script>
@@ -20,6 +30,10 @@
         data () {
             return {
                 musicMes: null,
+                
+                detail: {
+                    dialogVisible: false,
+                }
             }
         },
         computed: {
@@ -27,7 +41,12 @@
         },
 
         methods: {
-            
+            // 展示音乐信息详情
+            showMusicDetail(img, title) {
+                this.detail.dialogVisible = true;
+                this.detail.img = img;
+                this.detail.title = title;
+            }
         },
 
         mounted: function() {

@@ -2,7 +2,7 @@
   <div class="hyComponent">
       <div class="hot-box-content">
         <ul>
-            <li v-for="item in musicMes" @click="showMusicDetail(item.img, item.title)">
+            <li v-for="item in musicMes" @click="showMusicDetail(item.img, item.title, item.url)">
                 <div class="imgBox">
                     <img :src="item.img" alt="">
                 </div>
@@ -20,6 +20,10 @@
         size="small">
         <img :src="detail.img" alt="">
         <h5 v-text="detail.title"></h5>
+        <audio controls="controls" autoplay="autoplay">
+            <source :src="detail.url" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
       </el-dialog>
 
   </div>
@@ -33,6 +37,9 @@
                 
                 detail: {
                     dialogVisible: false,
+                    img: null,
+                    title: null,
+                    url: null
                 }
             }
         },
@@ -42,10 +49,12 @@
 
         methods: {
             // 展示音乐信息详情，模块框形式
-            showMusicDetail(img, title) {
+            showMusicDetail(img, title, url) {
                 this.detail.dialogVisible = true;
+                console.log(url)
                 this.detail.img = img;
                 this.detail.title = title;
+                this.detail.url = url;
             }
         },
 

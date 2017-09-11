@@ -71,7 +71,7 @@ import carousel from '../../components/Carousel'
 <style scoped>
     .findMusicComponent{
         width: 100%;
-        height: 84%;
+        height: auto;
     }
     .hot-box{
         width: 730px;

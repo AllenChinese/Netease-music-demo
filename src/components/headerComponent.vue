@@ -25,13 +25,13 @@
                       </li>
                   </ul>
               </div>
+              <span v-text="loginName"></span>
           </div>
       </div>
       <!-- 登录弹出框 -->
       <el-dialog
         :title="loginTitle"
         :visible.sync="layout.login.dialogVisible"
-        size="small"
         class="loginModal">
         <div class="loginIndex" v-if="layout.login.isShowLoginIndex">
             <div class="leftBox">
@@ -52,11 +52,11 @@
               </el-form-item>
 
               <el-form-item label="密码">
-                <el-input v-model="login.passworrd"></el-input>
+                <el-input v-model="login.password"></el-input>
               </el-form-item>
-
+              <span class="hint" v-if="layout.login.isShowHint">您还没有注册</span>
               <div class="block">
-                <el-button type="primary" @click="showLogin">登录</el-button>
+                <el-button type="primary" @click="loginEvent">登录</el-button>
               </div>
             </el-form>
           </div>
@@ -72,11 +72,11 @@
               </el-form-item>
 
               <el-form-item label="密码">
-                <el-input v-model="register.passworrd"></el-input>
+                <el-input v-model="register.password"></el-input>
               </el-form-item>
-
+              <span class="hint" v-if="layout.login.isShowHint">请输入完整</span>
               <div class="block">
-                <el-button type="primary" @click="showLogin">下一步</el-button>
+                <el-button type="primary" @click="registerEvent">下一步</el-button>
               </div>
             </el-form>
           </div>
@@ -88,6 +88,8 @@
   </div>
 </template>
 <script>
+import {cookie} from '../../static/js/util'
+import { Loading } from 'element-ui';
     export default {
         data () {
           return {
@@ -98,11 +100,13 @@
                 dialogVisible: false,
                 isShowLoginIndex: true,
                 isShowLogin: false,
-                isShowRegister: false,    
+                isShowRegister: false,  
+                isShowHint: false  
               }
             },
-            loginType: null,
+            loginType: null, 
             loginTitle: '登录',
+            loginName: '',
             login: {
               name: null,
               password: null
@@ -132,17 +136,25 @@
             },
 
             showLogin() {
+              this.login.name = null;
+              this.login.password = null;
+
               this.loginTitle = '登录';
               this.layout.login.isShowLoginIndex = false;
               this.layout.login.isShowLogin = true;
               this.layout.login.isShowRegister = false;
+              this.layout.login.isShowHint = false;
             },
 
             showRegister() {
+              this.register.name = null;
+              this.register.password = null;  
+
               this.loginTitle = '注册';
               this.layout.login.isShowLoginIndex = false;
               this.layout.login.isShowLogin = false;
               this.layout.login.isShowRegister = true;
+              this.layout.login.isShowHint = false;
             },
             /**
              * @argument e: 传入的参数 代表数组中 index 位置
@@ -161,11 +173,58 @@
                 this.layout.changeColor = arr;
             },
 
-           
+            loginEvent() {
+              let name = cookie.get('name');
+              let password = cookie.get('password');
+
+              if ( name == null || password == null ) {
+                this.layout.login.isShowHint = true;
+              }else{
+                if ( name == this.login.name && password == this.login.password ) {
+                  this.loginName = name;
+                  // 关闭登录框
+                  this.layout.login.dialogVisible = false;
+                }else{
+                  alert('账号和密码没有对上');
+                }
+              }
+            },
+
+            registerEvent() {
+              if ( this.register.name == null || this.register.password == null ) {
+                this.layout.login.isShowHint = true;
+              }else{
+                /**
+                 * 注册并登录，将账号密码写入cookie
+                 */
+                cookie.set('name', this.register.name);
+                cookie.set('password', this.register.password);
+
+                // 关闭登录框
+                this.layout.login.dialogVisible = false;
+
+                let loadingInstance = Loading.service({ fullscreen: true , text: '3秒后自动登录'});
+                setTimeout(() => {
+                  loadingInstance.close();
+                  this.loginName = cookie.get('name');
+                }, 3000);
+
+              }
+            },
+
+            isLogined() {
+              let name = cookie.get('name');
+              let password = cookie.get('password');
+
+              if ( name !== null && password !== null ) {
+                  this.loginName = name;
+              }
+            }
         },
 
         mounted: function() {
-          this.loginType = this.$store.state.loginType
+          this.loginType = this.$store.state.loginType;
+          this.isLogined();
         }
     }
 </script>
@@ -261,9 +320,10 @@
  * loginModal登录框
  */
  .loginModal{
-     text-align: left;
-     min-width: 400px;
-     min-height: 400px;
+   text-align: left;
+ }
+ .el-dialog{
+   width: 475px;
  }
  .loginModal .loginIndex{
    width: 100%;
@@ -312,6 +372,9 @@
  }
  .loginModal .sameBox .registerFooter span{
    cursor: pointer;
+ }
+ .hint{
+   color: #C20C0C;
  }
 </style>
 

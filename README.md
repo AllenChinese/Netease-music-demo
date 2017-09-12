@@ -11,7 +11,7 @@
 
 ![这里写图片描述](http://img.blog.csdn.net/20170907225318131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRE9DQUxMRU4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
-这是一张 Demo 的截图，大致模块四个，header、carousel、pages、footer。主要功能，组件（页面间的切换），登录（待做），轮播图组件，公共数据、状态管理。完成这个项目可以体验到：
+这是一张 Demo 的截图，大致模块四个，header、carousel、pages、footer。主要功能，组件（页面间的切换），登录（cookie模拟，未使用数据库），轮播图组件，公共数据、状态管理。完成这个项目可以体验到：
 
 	1、vue-cli 的环境搭建，项目目录。
 	2、学习组件化、模块化开发。

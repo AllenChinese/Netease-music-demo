@@ -1,16 +1,16 @@
 <template>
   <div class="headerComponent">
-      <div class="h-controller">
-          <a href="#/findMusicComponent" class="h-logo">
-            网易云音乐
+      <div class="h-controller"> 
+          <a href="#/findMusicComponent" class="h-logo" @click="changeLangEvent()">
+            {{$t('m.music')}}
           </a>
           <div class="h-tab">
               <ul>
-                  <router-link to="/findMusicComponent"><li v-bind:class="{ active: layout.changeColor[0] }" @click="changeBgcEvent(0)"><span><a href="">发现音乐</a></span></li></router-link>
-                  <router-link to="/myMusicComponent"><li v-bind:class="{ active: layout.changeColor[1] }" @click="changeBgcEvent(1)"><span><a href="">我的音乐</a></span></li></router-link>
-                  <router-link to="/friendComponent"><li v-bind:class="{ active: layout.changeColor[2] }" @click="changeBgcEvent(2)"><span><a href="">朋友</a></span></li></router-link>
-                  <router-link to="/musicManComponent"><li v-bind:class="{ active: layout.changeColor[3] }" @click="changeBgcEvent(3)"><span><a href="">音乐人</a></span></li></router-link>
-                  <router-link to="/downLoadComponent"><li v-bind:class="{ active: layout.changeColor[4] }" @click="changeBgcEvent(4)"><span><a href="">下载客户端</a></span></li></router-link>   
+                  <router-link to="/findMusicComponent"><li v-bind:class="{ active: layout.changeColor[0] }" @click="changeBgcEvent(0)"><span><a href="">{{$t('m.findMusic')}}</a></span></li></router-link>
+                  <router-link to="/myMusicComponent"><li v-bind:class="{ active: layout.changeColor[1] }" @click="changeBgcEvent(1)"><span><a href="">{{$t('m.myMusic')}}</a></span></li></router-link>
+                  <router-link to="/friendComponent"><li v-bind:class="{ active: layout.changeColor[2] }" @click="changeBgcEvent(2)"><span><a href="">{{$t('m.friend')}}</a></span></li></router-link>
+                  <router-link to="/musicManComponent"><li v-bind:class="{ active: layout.changeColor[3] }" @click="changeBgcEvent(3)"><span><a href="">{{$t('m.musician')}}</a></span></li></router-link>
+                  <router-link to="/downLoadComponent"><li v-bind:class="{ active: layout.changeColor[4] }" @click="changeBgcEvent(4)"><span><a href="">{{$t('m.download')}}</a></span></li></router-link>   
               </ul>
           </div>
           <div class="h-search">
@@ -89,7 +89,7 @@
 </template>
 <script>
 import {cookie} from '../../static/js/util'
-import { Loading } from 'element-ui';
+import { Loading } from 'element-ui'
     export default {
         data () {
           return {
@@ -114,11 +114,35 @@ import { Loading } from 'element-ui';
             register: {
               name: null,
               password: null
-            }
+            },
+            lang: 'zh-CN'
           }
         },
 
         methods: {
+            /**
+             * 切换语言 
+             */ 
+            changeLangEvent() {
+              this.$confirm('确定切换语言吗?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+              }).then(() => {
+                if ( this.lang === 'zh-CN' ) {
+                  this.lang = 'en-US';
+                  this.$i18n.locale = this.lang;
+                }else {
+                  this.lang = 'zh-CN';
+                  this.$i18n.locale = this.lang;
+                }
+              }).catch(() => {
+                this.$message({
+                  type: 'info',
+                });          
+              });
+            },
+
             showLoginType() {
               this.layout.isShowLoginType = true;
             },

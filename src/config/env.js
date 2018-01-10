@@ -7,16 +7,17 @@
 let baseUrl = ''
 let routerMode = 'history'
 
-// if (process.env.NODE_ENV == 'development') {
+if (process.env.NODE_ENV == 'development') {
 
-// }else if(process.env.NODE_ENV == 'production'){
+    baseUrl = 'https://easy-mock.com/mock/5a55c0dbde90b06840ddd09c/neteasy';
 
-// }
-// baseUrl = 'http://10.0.0.181:8888/mapdata';
-// baseUrl = 'http://10.0.0.46:8888/mapdata';
-baseUrl = '';
+} else if (process.env.NODE_ENV == 'production') {
+
+    baseUrl = 'https://easy-mock.com/mock/5a55c0dbde90b06840ddd09c/neteasy';
+
+}
 
 export {
-	baseUrl,
-	routerMode
+    baseUrl,
+    routerMode
 }

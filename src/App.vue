@@ -11,6 +11,7 @@
 import headerComponent from './components/headerComponent'
 import navComponent from './components/navComponent'
 import footerComponent from './components/footerComponent'
+import { initUser } from './service/dataProcessing'
 export default {
   name: 'app',
   data () {
@@ -25,12 +26,27 @@ export default {
   },
 
   methods:{
+    async initUser() {
+      let user;
+      let res = await initUser();
+
+      if ( res.success == true ) {
+        user = res.data[0].user;
+        const h = this.$createElement;
+
+        this.$notify({
+          title: user.name,
+          message: h('i', { style: 'color: teal'}, user.msg)
+        });       
+      }
+    }
 
   },
 
   mounted: function() {
     // 指定初始路由
     this.$router.push('/findMusicComponent');
+    this.initUser();
   }
 }
 </script>

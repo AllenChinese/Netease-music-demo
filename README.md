@@ -30,65 +30,75 @@
 <hr><h3>五、目录结构</h3>
 
 ```
-|——build                                                //构建              
-
-|——config                                               //配置
-
-|——node_modules                                         //npm项目依赖
-
-|——src	
-	|——assets                                             //静态资源，图片
-|	
-	|——components——                                       //公共组件 
-|			  |——carousel.vue                                 //轮播图组件
-	|
-|			  |——footerComponent.vue                          //底部组件
-	|		
-|			  |——headerComponent.vue                          //头部组件
-	|
-|			  |——navComponent.vue                             //红色部分
-	|
-|
-	|——config——
-|		      |——env.js                                     //开发api路径
-	|
-|		      |——fetch.js                                   //封装的异步请求
-	|——data
-|
-	|——router——                                           //路由
-|		      |——index.js
-	|——service                                            //项目中全部的异步接口请求文件
-|	
-	|——store——                                            //vuex状态管理
-|		     |——action.js
-	|						
-|		     |——index.js
-	|
-|		     |——mutations.js
-	|——view——                                             //组件页面部分
-|		    |——findMusicPage——
-	|				 |——musicTypeController
-|		    |
-	|				 |——findMusicComponent.vue
-|		    |——downloadComponent.vue
-	|				
-|		    |——friendComponent.vue	
-	|				
-|		    |——musicManComponent.vue
-	|
-|		    |——myMusicComponent.vue
-	|——app.vue                                            //主文件
-|			
-	|——main.js                                            //主文件入口
-|——static
-	
-|——test                                                 //单元测试
-
-|——index.html	                                          //首页
-
-|——package.json
-
-|——README.md	
+├── LICENSE
+├── README.md
+├── build                                // 构建
+│   ├── build.js
+│   ├── check-versions.js
+│   ├── dev-client.js
+│   ├── dev-server.js
+│   ├── utils.js
+│   ├── vue-loader.conf.js
+│   ├── webpack.base.conf.js
+│   ├── webpack.dev.conf.js
+│   ├── webpack.prod.conf.js
+│   └── webpack.test.conf.js
+├── config                               // 配置
+│   ├── dev.env.js
+│   ├── index.js
+│   ├── prod.env.js
+│   └── test.env.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.vue
+│   ├── assets                           // 静态资源，图片
+│   │   ├── image
+│   │   └── logo.png
+│   ├── common    
+│   │   └── lang                         // 国际化文件包
+│   ├── components                       // 公共组件 
+│   │   ├── Carousel.vue
+│   │   ├── footerComponent.vue
+│   │   ├── headerComponent.vue
+│   │   └── navComponent.vue
+│   ├── config
+│   │   ├── env.js                       // 开发 api 路径（项目环境）
+│   │   └── fetch.js                     // 封装的异步请求
+│   ├── data
+│   │   └── detail.json
+│   ├── main.js
+│   ├── router
+│   │   └── index.js
+│   ├── service                          // 项目中全部的异步接口请求文件
+│   │   └── dataProcessing.js
+│   ├── store
+│   │   ├── actions.js
+│   │   ├── index.js
+│   │   ├── mutations.js
+│   │   └── store.js
+│   └── view
+│       ├── downLoadComponent.vue
+│       ├── findMusicPage
+│       ├── friendComponent.vue
+│       ├── musicManComponent.vue
+│       └── myMusicComponent.vue
+├── static
+│   ├── css
+│   │   └── common.css
+│   └── js
+│       └── util.js
+└── test
+    ├── e2e
+    │   ├── custom-assertions
+    │   ├── nightwatch.conf.js
+    │   ├── runner.js
+    │   └── specs
+    └── unit
+        ├── index.js
+        ├── karma.conf.js
+        └── specs
 ```
 <hr/><h3>六、vue-cli-easy</h3>
 

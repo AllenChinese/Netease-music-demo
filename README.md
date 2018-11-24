@@ -1,3 +1,5 @@
+### vue-cli 2.0 该项目不再更新。
+
 <h3>一、前言</h3>
 
 &nbsp;&nbsp;在这个 vue 系列的第一篇文章，我写的是 vue-cli-simple 脚手架的环境搭建。前段时间，也刚好给公司做了一个后台管理系统的产品，用的就是 vue-cli-simple。 一个月的时间将系统从无到上线，组件化、模块化开发的非常快速、可读性、复用性，整理架构清晰，易管理、维护。
@@ -105,9 +107,8 @@
 这是我自己根据 vue-cli 环境，添加了 vue-router, vuex, api接口公共抽象配置，elementUI 的脚手架。你可以直接 clone 到你的 workspace 中，进行依赖的安装（npm install）,即可以进行自己的项目开发了。
 
 项目地址传送门：[github vue-cli-easy 链接](https://github.com/AllenChinese/vue-cli-easy)
-<hr>
 
-**github 上的 README.md 持续的会完善 ... ...**
+
 
 
 

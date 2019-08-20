@@ -13,6 +13,7 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "element-ui": "^1.4.3",
     "mint-ui": "^2.2.9",
     "nuxt": "^1.0.0-rc9",

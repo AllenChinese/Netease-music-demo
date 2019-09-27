@@ -1,3 +1,10 @@
+# Netease-music-demo
+
+![github forks](https://img.shields.io/github/forks/AllenChinese/Netease-music-demo?style=social)
+![github stars](https://img.shields.io/github/stars/AllenChinese/Netease-music-demo?style=social)
+![github watchers](https://img.shields.io/github/watchers/AllenChinese/Netease-music-demo?style=social)
+![github license](https://img.shields.io/github/license/AllenChinese/Netease-music-demo)
+
 ### vue-cli 2.0 该项目不再更新。
 
 <h3>一、前言</h3>
@@ -14,11 +21,12 @@
 ![这里写图片描述](http://img.blog.csdn.net/20170907225318131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRE9DQUxMRU4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 这是一张 Demo 的截图，大致模块四个，header、carousel、pages、footer。主要功能，组件（页面间的切换），登录（cookie模拟，未使用数据库），轮播图组件，公共数据、状态管理。完成这个项目可以体验到：
-
-	1、vue-cli 的环境搭建，项目目录。
-	2、学习组件化、模块化开发。
-	3、学习 vue 全家桶：vue-router 路由、vuex 状态管理。
-	4、了解 webpack 的压缩、打包。
+	
+  - vue-cli 的环境搭建，项目目录。
+  - 学习组件化、模块化开发。
+  - 学习 vue 全家桶：vue-router 路由、vuex 状态管理。
+  - 了解 webpack 的压缩、打包。
+  
 <hr/><h3>三、技术栈</h3>
 
 	vue.js + vue-router + vuex + ElementUI
